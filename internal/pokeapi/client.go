@@ -47,6 +47,7 @@ type page struct {
 /* ------------------------------------------------------------------ */
 
 var cache = pokecache.NewCache(5 * time.Second)
+func Cache() *pokecache.Cache { return cache }
 
 /* ------------------------------------------------------------------ */
 /*  Public API                                                        */
@@ -93,3 +94,5 @@ func parsePage(b []byte) (names []string, next, prev *string, err error) {
 	}
 	return names, p.Next, p.Previous, nil
 }
+
+func (c *Client) HC() *http.Client { return c.hc }

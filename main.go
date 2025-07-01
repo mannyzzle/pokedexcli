@@ -21,11 +21,10 @@ func main() {
 			continue
 		}
 		if cmd, ok := commands[words[0]]; ok {
-			if err := cmd.callback(cfg); err != nil {
+	        if err := cmd.callback(cfg, words[1:]); err != nil {
 				fmt.Println("Error:", err)
-			}
-		} else {
+				}
+			} else {
 			fmt.Println("Unknown command:", words[0])
-		}
+				}}
 	}
-}
